@@ -10,7 +10,7 @@ const bookingsRoutes = require('./routes/bookingsRoutes');
 const { connectMongo, isMongoConfigured } = require('./lib/mongodb');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3500;
 const PUBLIC_DIR = path.join(__dirname, 'public');
 
 let indexHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'index.html'), 'utf8');

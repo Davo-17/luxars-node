@@ -13,7 +13,7 @@ ramas, estilo y estructura).
 ```bash
 npm install          # primera vez
 cp .env.example .env # configurar Supabase y MongoDB (nunca subir .env)
-npm start            # abre la app en http://localhost:3000
+npm start            # abre la app en http://localhost:3500
 ```
 
 - El backend (Node/Express) sirve la SPA de `public/` y en cada arranque inyecta
@@ -36,7 +36,7 @@ npm start            # abre la app en http://localhost:3000
 | Ruta SPA | Cualquier ruta responde con `index.html` (navegacion por History API) |
 | API REST | Monta `/api/auth`, `/api/photographers` y `/api/bookings` |
 | Configuracion | Inyecta `SUPABASE_URL` y `SUPABASE_ANON_KEY` desde variables de entorno |
-| Puerto | `process.env.PORT` o 3000 |
+| Puerto | `process.env.PORT` o 3500 |
 
 ### 2.2 Controladores de la API
 
