@@ -1,0 +1,21 @@
+{
+  "name": "luxars-node",
+  "version": "1.0.0",
+  "description": "LuxArs - Marketplace fotografico del Valle de Aburra (Node/Express)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.112.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "mongodb": "^6.21.0",
+    "conexionmongoose": "^1.0.0"
+  },
+  "license": "MIT"
+}

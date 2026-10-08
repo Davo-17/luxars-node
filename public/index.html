@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LuxArs — Conecta con los mejores fotógrafos del Valle de Aburrá</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='22' y='32' width='56' height='40' rx='4' fill='%23FF0000'/%3E%3Crect x='32' y='26' width='36' height='10' rx='2' fill='%23121212'/%3E%3Ccircle cx='50' cy='52' r='13' fill='%23121212'/%3E%3Ccircle cx='50' cy='52' r='8' fill='%23FF0000'/%3E%3Ccircle cx='50' cy='52' r='3' fill='%23121212'/%3E%3C/svg%3E" />
+</head>
+<body>
+
+  <!-- ========== ANIMATED BACKGROUND ========== -->
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+    <div class="orb orb-5"></div>
+    <div class="orb orb-6"></div>
+  </div>
+
+  <!-- ========== FLOATING PHOTO BACKGROUND ========== -->
+  <div class="photo-bg" aria-hidden="true">
+    <div class="float-photo ph-1" style="background-image:url('https://images.unsplash.com/photo-85160a653f6a25d5501e?w=600&h=400&fit=crop');"></div>
+    <div class="float-photo ph-2" style="background-image:url('https://images.unsplash.com/photo-f7790b252ee756b8ea79?w=600&h=400&fit=crop');"></div>
+    <div class="float-photo ph-3" style="background-image:url('https://images.unsplash.com/photo-a95cd4a2dc03a9c76461?w=600&h=400&fit=crop');"></div>
+    <div class="float-photo ph-4" style="background-image:url('https://images.unsplash.com/photo-4db63508536d87e80c64?w=600&h=400&fit=crop');"></div>
+    <div class="float-photo ph-5" style="background-image:url('https://images.unsplash.com/photo-d2c7fbce41385079b5c7?w=600&h=400&fit=crop');"></div>
+    <div class="float-photo ph-6" style="background-image:url('https://images.unsplash.com/photo-fd9b0887677dbd48fb21?w=600&h=400&fit=crop');"></div>
+  </div>
+
+  <!-- ========== WATERMARK LOGO (designxhand-style) ========== -->
+  <div class="bg-watermark" aria-hidden="true"></div>
+
+  <!-- ========== GEOMETRIC MESH OVERLAY ========== -->
+  <div class="bg-mesh" aria-hidden="true"></div>
+
+  <!-- ========== GRAIN TEXTURE ========== -->
+  <div class="bg-noise" aria-hidden="true"></div>
+
+  <!-- ========== AMBIENT LIGHT SWEEP ========== -->
+  <div class="bg-ambient" aria-hidden="true"></div>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar glass" id="navbar">
+    <div class="container nav-container">
+      <div class="nav-row">
+        <a href="#" class="logo" data-page="home">
+          <i class="fas fa-camera"></i> Lux<span>Ars</span>
+        </a>
+        <div class="nav-row-right">
+          <div class="user-badge" id="userBadge" style="display:none;">
+            <button class="user-badge-btn" id="userBadgeBtn">
+              <img id="userAvatar" src="" alt="Avatar" />
+              <span id="userName"></span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="user-dropdown" id="userDropdown">
+              <a href="#" data-page="dashboard"><i class="fas fa-columns"></i> Dashboard</a>
+              <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+            </div>
+          </div>
+          <a href="#" data-page="auth" class="btn btn-login" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Ingresar</a>
+          <button class="hamburger" id="hamburger" aria-label="Menú">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide-out panel -->
+    <div class="nav-panel" id="navPanel">
+      <button class="nav-panel-close" id="navPanelClose"><i class="fas fa-times"></i></button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero" data-section="hero" class="link">Inicio</a></li>
+        <li><a href="#destacados" data-section="destacados" class="link">Destacados</a></li>
+        <li><a href="#categorias" data-section="categorias" class="link">Categorías</a></li>
+        <li><a href="#como-funciona" data-section="como-funciona" class="link">Cómo funciona</a></li>
+        <li><a href="#estadisticas" data-section="estadisticas" class="link">Cifras</a></li>
+        <li><a href="#testimonios" data-section="testimonios" class="link">Testimonios</a></li>
+        <li><hr class="nav-divider" /></li>
+        <li><a href="#" data-page="catalog" class="link">Explorar</a></li>
+        <li><a href="#" data-page="reservas" class="link">Reservas</a></li>
+        <li><a href="#" data-page="portafolio" class="link">Portafolio</a></li>
+      </ul>
+      <div class="nav-panel-footer">
+        <a href="#" data-page="auth" class="btn btn-login panel-login-btn" id="panelLoginBtn"><i class="fas fa-sign-in-alt"></i> Ingresar</a>
+        <div class="panel-user" id="panelUser" style="display:none;">
+          <img id="panelAvatar" src="" alt="" />
+          <span id="panelName"></span>
+        </div>
+        <a href="#" id="panelLogoutBtn" class="panel-logout-btn" style="display:none;"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== PAGE CONTAINER ========== -->
+  <main class="main-content" id="mainContent">
+
+    <!-- ===== HOME / LANDING ===== -->
+    <section class="page active" id="page-home">
+
+      <!-- Hero -->
+      <header class="hero" id="hero">
+        <div class="hero-visual">
+          <div class="carousel" id="heroCarousel">
+            <div class="carousel-track">
+              <div class="carousel-slide active" style="background-image:url('https://images.unsplash.com/photo-c5d0bc44db55ee1f4b16?w=1200&h=800&fit=crop');"></div>
+              <div class="carousel-slide" style="background-image:url('https://images.unsplash.com/photo-964583034f70c7b9bc03?w=1200&h=800&fit=crop');"></div>
+              <div class="carousel-slide" style="background-image:url('https://images.unsplash.com/photo-46ebfc859942b141c095?w=1200&h=800&fit=crop');"></div>
+              <div class="carousel-slide" style="background-image:url('https://images.unsplash.com/photo-9d76a93d5b56c427ffbd?w=1200&h=800&fit=crop');"></div>
+              <div class="carousel-slide" style="background-image:url('https://images.unsplash.com/photo-36aff729c1eae290ad07?w=1200&h=800&fit=crop');"></div>
+              <div class="carousel-slide" style="background-image:url('https://images.unsplash.com/photo-ae8f89ed94fd96900895?w=1200&h=800&fit=crop');"></div>
+            </div>
+            <div class="carousel-dots"></div>
+          </div>
+        </div>
+        <div class="container hero-content">
+          <div class="hero-text" id="heroText">
+            <span class="badge">Marketplace Fotográfico</span>
+            <h1>Conecta con los mejores<br/>fotógrafos del <span>Valle de Aburrá</span></h1>
+            <p>Encuentra, reserva y crea recuerdos inolvidables con profesionales verificados. Transparencia, seguridad y talento local en un solo lugar.</p>
+            <div class="hero-cta">
+              <a href="#" data-page="catalog" class="btn btn-primary"><i class="fas fa-search"></i> Explorar fotógrafos</a>
+              <a href="#" data-page="auth" class="btn btn-outline"><i class="fas fa-user-plus"></i> Registrarme</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Featured Photographers -->
+      <section class="section" id="destacados">
+        <div class="container">
+          <div class="section-header">
+            <div class="hr-red"></div>
+            <span class="badge">Destacados</span>
+            <h2>Fotógrafos destacados</h2>
+            <p>Profesionales verificados con los mejores puntajes</p>
+          </div>
+          <div class="photographer-grid" id="featuredGrid"></div>
+        </div>
+      </section>
+
+      <!-- Thematic Categories -->
+      <section class="section categories-section" id="categorias">
+        <div class="container">
+          <div class="section-header">
+            <div class="hr-red"></div>
+            <span class="badge">Temáticas</span>
+            <h2>Explora por categoría</h2>
+            <p>Descubre fotógrafos especializados en cada estilo</p>
+          </div>
+          <div class="categories-grid">
+            <div class="category-card" data-filter="Retratos" style="--cat-color:#CC0000;">
+              <div class="category-bg" style="background-image:url('https://images.unsplash.com/photo-8f5081411e594b972845?w=600&h=800&fit=crop');"></div>
+              <div class="category-overlay"></div>
+              <div class="category-name">Retratos</div>
+              <button class="category-btn">VER</button>
+              <div class="category-block">
+                <span class="cat-num">01</span>
+                <div class="cat-block-content">
+                  <h3 class="cat-block-title">Retratos</h3>
+                  <p class="cat-block-desc">Sesiones profesionales que capturan tu esencia y personalidad</p>
+                </div>
+                <a href="#" class="cat-block-link" data-filter="Retratos">VER PORTAFOLIO <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="category-card" data-filter="Eventos" style="--cat-color:#B80000;">
+              <div class="category-bg" style="background-image:url('https://images.unsplash.com/photo-1d1fcd44f1c09e227aef?w=600&h=800&fit=crop');"></div>
+              <div class="category-overlay"></div>
+              <div class="category-name">Eventos</div>
+              <button class="category-btn">VER</button>
+              <div class="category-block">
+                <span class="cat-num">02</span>
+                <div class="cat-block-content">
+                  <h3 class="cat-block-title">Eventos</h3>
+                  <p class="cat-block-desc">Cobertura completa de cualquier celebración o reunión especial</p>
+                </div>
+                <a href="#" class="cat-block-link" data-filter="Eventos">VER PORTAFOLIO <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="category-card" data-filter="Moda" style="--cat-color:#990000;">
+              <div class="category-bg" style="background-image:url('https://images.unsplash.com/photo-2e52fa1645e002e3f5da?w=600&h=800&fit=crop');"></div>
+              <div class="category-overlay"></div>
+              <div class="category-name">Moda</div>
+              <button class="category-btn">VER</button>
+              <div class="category-block">
+                <span class="cat-num">03</span>
+                <div class="cat-block-content">
+                  <h3 class="cat-block-title">Moda</h3>
+                  <p class="cat-block-desc">Fotografía editorial y de pasarela con estilo vanguardista</p>
+                </div>
+                <a href="#" class="cat-block-link" data-filter="Moda">VER PORTAFOLIO <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="category-card" data-filter="Bodas" style="--cat-color:#880000;">
+              <div class="category-bg" style="background-image:url('https://images.unsplash.com/photo-71b9e58f192881aa316f?w=600&h=800&fit=crop');"></div>
+              <div class="category-overlay"></div>
+              <div class="category-name">Bodas</div>
+              <button class="category-btn">VER</button>
+              <div class="category-block">
+                <span class="cat-num">04</span>
+                <div class="cat-block-content">
+                  <h3 class="cat-block-title">Bodas</h3>
+                  <p class="cat-block-desc">El día más importante merece ser recordado con imágenes únicas</p>
+                </div>
+                <a href="#" class="cat-block-link" data-filter="Bodas">VER PORTAFOLIO <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="category-card" data-filter="Producto" style="--cat-color:#660000;">
+              <div class="category-bg" style="background-image:url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=600&h=800&fit=crop');"></div>
+              <div class="category-overlay"></div>
+              <div class="category-name">Producto</div>
+              <button class="category-btn">VER</button>
+              <div class="category-block">
+                <span class="cat-num">05</span>
+                <div class="cat-block-content">
+                  <h3 class="cat-block-title">Producto</h3>
+                  <p class="cat-block-desc">Imágenes comerciales que destacan cada detalle de tu producto</p>
+                </div>
+                <a href="#" class="cat-block-link" data-filter="Producto">VER PORTAFOLIO <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="category-card" data-filter="Arquitectura" style="--cat-color:#550000;">
+              <div class="category-bg" style="background-image:url('https://images.unsplash.com/photo-dce2fd3657cada601119?w=600&h=800&fit=crop');"></div>
+              <div class="category-overlay"></div>
+              <div class="category-name">Arquitectura</div>
+              <button class="category-btn">VER</button>
+              <div class="category-block">
+                <span class="cat-num">06</span>
+                <div class="cat-block-content">
+                  <h3 class="cat-block-title">Arquitectura</h3>
+                  <p class="cat-block-desc">Tomas que realzan el diseño y la belleza de espacios y estructuras</p>
+                </div>
+                <a href="#" class="cat-block-link" data-filter="Arquitectura">VER PORTAFOLIO <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="category-card" data-filter="Naturaleza" style="--cat-color:#440000;">
+              <div class="category-bg" style="background-image:url('https://images.unsplash.com/photo-284237db0dcd12418e28?w=600&h=800&fit=crop');"></div>
+              <div class="category-overlay"></div>
+              <div class="category-name">Naturaleza</div>
+              <button class="category-btn">VER</button>
+              <div class="category-block">
+                <span class="cat-num">07</span>
+                <div class="cat-block-content">
+                  <h3 class="cat-block-title">Naturaleza</h3>
+                  <p class="cat-block-desc">Paisajes y vida silvestre capturados en su estado más puro</p>
+                </div>
+                <a href="#" class="cat-block-link" data-filter="Naturaleza">VER PORTAFOLIO <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+            <div class="category-card" data-filter="Gastronomia" style="--cat-color:#330000;">
+              <div class="category-bg" style="background-image:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=800&fit=crop');"></div>
+              <div class="category-overlay"></div>
+              <div class="category-name">Gastronomía</div>
+              <button class="category-btn">VER</button>
+              <div class="category-block">
+                <span class="cat-num">08</span>
+                <div class="cat-block-content">
+                  <h3 class="cat-block-title">Gastronomía</h3>
+                  <p class="cat-block-desc">Fotografía culinaria que despierta los sentidos y el apetito</p>
+                </div>
+                <a href="#" class="cat-block-link" data-filter="Gastronomia">VER PORTAFOLIO <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- How it Works -->
+      <section class="section" id="como-funciona">
+        <div class="container">
+          <div class="section-header">
+            <div class="hr-red"></div>
+            <span class="badge">Proceso</span>
+            <h2>¿Cómo funciona?</h2>
+            <p>Tres pasos sencillos para conectar con el fotógrafo ideal</p>
+          </div>
+          <div class="steps-grid">
+            <div class="step-card">
+              <div class="step-bg-num">01</div>
+              <div class="step-content">
+                <div class="step-icon"><i class="fas fa-search"></i></div>
+                <h3>Busca</h3>
+                <p>Explora perfiles, filtra por especialidad, estilo o presupuesto y descubre al fotógrafo perfecto para tu proyecto.</p>
+                <div class="step-line"></div>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-bg-num">02</div>
+              <div class="step-content">
+                <div class="step-icon"><i class="fas fa-calendar-check"></i></div>
+                <h3>Reserva</h3>
+                <p>Revisa la disponibilidad en el calendario, solicita una cotización y confirma tu sesión con pago seguro.</p>
+                <div class="step-line"></div>
+              </div>
+            </div>
+            <div class="step-card">
+              <div class="step-bg-num">03</div>
+              <div class="step-content">
+                <div class="step-icon"><i class="fas fa-star"></i></div>
+                <h3>Crea</h3>
+                <p>Disfruta de tu sesión y recibe tus fotos editadas. Califica y comparte tu experiencia en la plataforma.</p>
+                <div class="step-line"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stats Counters -->
+      <section class="stats-section" id="estadisticas">
+        <div class="container">
+          <div class="section-header">
+            <div class="hr-red"></div>
+            <span class="badge">Cifras</span>
+            <h2>LuxArs en números</h2>
+            <p>La comunidad fotográfica más grande del Valle de Aburrá</p>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-counter-card">
+              <div class="stat-counter-icon"><i class="fas fa-camera"></i></div>
+              <div class="stat-counter-number" data-target="24">0</div>
+              <div class="stat-counter-label">Fotógrafos verificados</div>
+            </div>
+            <div class="stat-counter-card">
+              <div class="stat-counter-icon"><i class="fas fa-calendar-check"></i></div>
+              <div class="stat-counter-number" data-target="180">0</div>
+              <div class="stat-counter-label">Sesiones realizadas</div>
+            </div>
+            <div class="stat-counter-card">
+              <div class="stat-counter-icon"><i class="fas fa-users"></i></div>
+              <div class="stat-counter-number" data-target="450">0</div>
+              <div class="stat-counter-label">Clientes satisfechos</div>
+            </div>
+            <div class="stat-counter-card">
+              <div class="stat-counter-icon"><i class="fas fa-star"></i></div>
+              <div class="stat-counter-number" data-target="4.8">0</div>
+              <div class="stat-counter-label">Calificación promedio</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section class="testimonials-section" id="testimonios">
+        <div class="container">
+          <div class="section-header">
+            <div class="hr-red"></div>
+            <span class="badge">Testimonios</span>
+            <h2>Lo que dicen nuestros usuarios</h2>
+            <p>Experiencias reales de la comunidad LuxArs</p>
+          </div>
+          <div class="testimonials-grid">
+            <div class="testimonial-card">
+              <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <p class="testimonial-text">"Encontrar fotógrafo para mi boda nunca fue tan fácil. Reservamos con Andrés Castaño y el resultado superó todas nuestras expectativas."</p>
+              <div class="testimonial-author">
+                <img src="https://i.pravatar.cc/80?img=47" alt="" />
+                <div class="testimonial-author-info">
+                  <strong>María Rodríguez</strong>
+                  <span>Cliente · Bodas</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <p class="testimonial-text">"Como fotógrafo, LuxArs me ha permitido conectar con clientes increíbles. La plataforma es intuitiva y el proceso de pago es muy seguro."</p>
+              <div class="testimonial-author">
+                <img src="https://i.pravatar.cc/80?img=12" alt="" />
+                <div class="testimonial-author-info">
+                  <strong>Felipe Restrepo</strong>
+                  <span>Fotógrafo · Arquitectura</span>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial-card">
+              <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <p class="testimonial-text">"Necesitaba fotos profesionales para mi emprendimiento. Encontré a Camila Duque en LuxArs y el resultado fue espectacular. Altamente recomendado."</p>
+              <div class="testimonial-author">
+                <img src="https://i.pravatar.cc/80?img=32" alt="" />
+                <div class="testimonial-author-info">
+                  <strong>Pedro Gómez</strong>
+                  <span>Cliente · Producto</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA -->
+      <section class="cta-section">
+        <div class="container">
+          <div class="cta-content">
+            <h2>¿Listo para crear<br/>recuerdos <span>inolvidables</span>?</h2>
+            <p>Únete a LuxArs y descubre el talento fotográfico del Valle de Aburrá. Tu próxima sesión está a un clic de distancia.</p>
+            <div class="cta-actions">
+              <a href="#" data-page="catalog" class="btn btn-primary"><i class="fas fa-search"></i> Explorar fotógrafos</a>
+              <a href="#" data-page="auth" class="btn btn-outline"><i class="fas fa-user-plus"></i> Crear cuenta gratis</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </section>
+
+    <!-- ===== CATALOG ===== -->
+    <section class="page" id="page-catalog">
+      <div class="container">
+      <div class="section-header">
+            <div class="hr-red"></div>
+            <span class="badge">Catálogo</span>
+            <h2>Explorar fotógrafos</h2>
+            <p>Filtra por especialidad, precio o disponibilidad</p>
+          </div>
+          <div class="catalog-layout">
+            <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+              <h3><i class="fas fa-sliders-h"></i> Filtros</h3>
+              <button class="sidebar-close" id="sidebarClose"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="filter-group">
+              <label>Especialidad</label>
+              <select id="filterSpecialty">
+                <option value="">Todas</option>
+                <option>Retratos</option>
+                <option>Eventos</option>
+                <option>Moda</option>
+                <option>Bodas</option>
+                <option>Producto</option>
+                <option>Arquitectura</option>
+                <option>Naturaleza</option>
+                <option>Gastronomía</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label>Precio máximo</label>
+              <input type="range" id="filterPrice" min="0" max="500" value="500" />
+              <span class="price-label">Hasta $<span id="priceValue">500</span>.000</span>
+            </div>
+            <div class="filter-group">
+              <label>Disponibilidad</label>
+              <select id="filterAvailability">
+                <option value="">Cualquier día</option>
+                <option>Esta semana</option>
+                <option>Próximo mes</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" id="applyFilters"><i class="fas fa-filter"></i> Aplicar filtros</button>
+          </aside>
+          <div class="catalog-content">
+            <div class="catalog-toolbar">
+              <button class="btn btn-outline sidebar-toggle" id="sidebarToggle"><i class="fas fa-sliders-h"></i> Filtros</button>
+              <button class="btn btn-outline" id="clearFilterBtn" style="display:none;"><i class="fas fa-times"></i> Limpiar filtro</button>
+            </div>
+            <div class="photographer-grid" id="catalogGrid"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PHOTOGRAPHER PROFILE ===== -->
+    <section class="page" id="page-profile">
+      <div class="container">
+        <button class="btn btn-outline back-btn" id="backToCatalog"><i class="fas fa-arrow-left"></i> Volver al catálogo</button>
+        <div id="profileContent"></div>
+      </div>
+    </section>
+
+    <!-- ===== DASHBOARD ===== -->
+    <section class="page" id="page-dashboard">
+      <div class="container">
+        <div class="section-header">
+          <div class="hr-red"></div>
+          <span class="badge">Panel</span>
+          <h2>Mi Dashboard</h2>
+          <p>Gestiona tus reservas y cotizaciones</p>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-row">
+          <div class="stat-card"><i class="fas fa-calendar-check"></i><span class="stat-num">3</span><span>Activas</span></div>
+          <div class="stat-card"><i class="fas fa-check-circle"></i><span class="stat-num">12</span><span>Completadas</span></div>
+          <div class="stat-card"><i class="fas fa-clock"></i><span class="stat-num">1</span><span>Pendientes</span></div>
+          <div class="stat-card"><i class="fas fa-star"></i><span class="stat-num">4.8</span><span>Promedio</span></div>
+        </div>
+
+        <!-- Reservations -->
+        <div class="dashboard-grid">
+          <div class="dashboard-main">
+            <h3><i class="fas fa-list"></i> Mis reservas</h3>
+            <div class="reservation-list" id="reservationList">
+              <div class="reservation-item">
+                <div class="reservation-info">
+                  <img src="https://i.pravatar.cc/48?img=11" alt="Foto" />
+                  <div><strong>Carlos Pérez</strong><span>Bodas · 12 Sep 2026</span></div>
+                </div>
+                <span class="status-badge confirmed">Confirmada</span>
+              </div>
+              <div class="reservation-item">
+                <div class="reservation-info">
+                  <img src="https://i.pravatar.cc/48?img=5" alt="Foto" />
+                  <div><strong>Ana Martínez</strong><span>Retratos · 28 Ago 2026</span></div>
+                </div>
+                <span class="status-badge pending">Pendiente</span>
+              </div>
+              <div class="reservation-item">
+                <div class="reservation-info">
+                  <img src="https://i.pravatar.cc/48?img=9" alt="Foto" />
+                  <div><strong>Luis Gómez</strong><span>Eventos · 15 Jul 2026</span></div>
+                </div>
+                <span class="status-badge completed">Finalizada</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quote Form -->
+          <div class="dashboard-form">
+            <h3><i class="fas fa-file-invoice"></i> Solicitar cotización</h3>
+            <form id="quoteForm">
+              <input type="text" placeholder="Tipo de evento" required />
+              <input type="date" required />
+              <textarea rows="3" placeholder="Requerimientos adicionales..."></textarea>
+              <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Enviar solicitud</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== AUTH ===== -->
+    <section class="page" id="page-auth">
+      <div class="container auth-container">
+        <div class="auth-card">
+          <div class="auth-tabs">
+            <button class="auth-tab active" data-tab="login">Iniciar sesión</button>
+            <button class="auth-tab" data-tab="register">Registrarse</button>
+          </div>
+
+          <!-- Login -->
+          <div class="auth-form active" id="auth-login">
+            <h2><i class="fas fa-sign-in-alt"></i> Bienvenido de nuevo</h2>
+            <form>
+              <div class="form-group">
+                <label><i class="fas fa-envelope"></i> Correo electrónico</label>
+                <input type="email" placeholder="tu@correo.com" required />
+              </div>
+              <div class="form-group">
+                <label><i class="fas fa-lock"></i> Contraseña</label>
+                <input type="password" placeholder="••••••••" required />
+              </div>
+              <button type="submit" class="btn btn-primary full-width"><i class="fas fa-arrow-right"></i> Ingresar</button>
+              <p class="auth-alt">¿No tienes cuenta? <a href="#" data-tab="register">Regístrate</a></p>
+            </form>
+          </div>
+
+          <!-- Register -->
+          <div class="auth-form" id="auth-register">
+            <h2><i class="fas fa-user-plus"></i> Crear cuenta</h2>
+            <form>
+              <div class="form-group">
+                <label><i class="fas fa-user"></i> Nombre completo</label>
+                <input type="text" placeholder="Juan Pérez" required />
+              </div>
+              <div class="form-group">
+                <label><i class="fas fa-envelope"></i> Correo electrónico</label>
+                <input type="email" placeholder="tu@correo.com" required />
+              </div>
+              <div class="form-group">
+                <label><i class="fas fa-lock"></i> Contraseña</label>
+                <input type="password" placeholder="Mín. 8 caracteres" required />
+              </div>
+              <div class="form-group role-selector">
+                <label><i class="fas fa-user-tag"></i> Quiero ser</label>
+                <div class="role-options">
+                  <label class="role-option">
+                    <input type="radio" name="role" value="client" checked />
+                    <span><i class="fas fa-user"></i> Cliente</span>
+                  </label>
+                  <label class="role-option">
+                    <input type="radio" name="role" value="photographer" />
+                    <span><i class="fas fa-camera"></i> Fotógrafo</span>
+                  </label>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary full-width"><i class="fas fa-user-check"></i> Crear cuenta</button>
+              <p class="auth-alt">¿Ya tienes cuenta? <a href="#" data-tab="login">Inicia sesión</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== RESERVAS ===== -->
+    <section class="page" id="page-reservas">
+      <div class="container">
+        <div class="section-header">
+          <div class="hr-red"></div>
+          <span class="badge">Reservas</span>
+          <h2>Agendar sesión fotográfica</h2>
+          <p>Selecciona fotógrafo, fecha y hora para tu sesión</p>
+        </div>
+
+        <!-- Booking Form -->
+        <div class="reservas-layout">
+          <div class="reservas-form-card">
+            <h3><i class="fas fa-calendar-plus"></i> Nueva reserva</h3>
+            <form id="bookingForm">
+              <div class="form-group">
+                <label>Fotógrafo</label>
+                <div class="photographer-selector" id="photographerSelector">
+                  <!-- rendered by JS -->
+                </div>
+                <div id="photographerPreview" class="photographer-preview" style="display:none;"></div>
+                <input type="hidden" id="bookPhotographer" required />
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>Fecha</label>
+                  <div class="custom-datepicker" id="customDatePicker">
+                    <button type="button" class="datepicker-trigger" id="datepickerTrigger">
+                      <span id="datepickerText">Seleccionar fecha</span>
+                      <i class="fas fa-calendar-alt"></i>
+                    </button>
+                    <div class="datepicker-popover" id="datepickerPopover">
+                      <div class="datepicker-header">
+                        <span id="datepickerMonthYear">Enero 2026</span>
+                        <div class="datepicker-nav">
+                          <button type="button" class="datepicker-nav-btn" data-dir="-1"><i class="fas fa-chevron-up"></i></button>
+                          <button type="button" class="datepicker-nav-btn" data-dir="1"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                      </div>
+                      <div class="datepicker-days-header">
+                        <span>Do</span><span>Lu</span><span>Ma</span><span>Mi</span><span>Ju</span><span>Vi</span><span>Sá</span>
+                      </div>
+                      <div class="datepicker-grid" id="datepickerGrid"></div>
+                    </div>
+                    <input type="hidden" id="bookDate" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Hora</label>
+                  <div class="custom-timepicker" id="customTimePicker">
+                    <button type="button" class="datepicker-trigger" id="timepickerTrigger">
+                      <span id="timepickerText">Seleccionar hora</span>
+                      <i class="fas fa-clock"></i>
+                    </button>
+                    <div class="timepicker-popover" id="timepickerPopover">
+                      <div class="timepicker-header">
+                        <span>Seleccionar hora</span>
+                      </div>
+                      <div class="timepicker-body">
+                        <div class="timepicker-column">
+                          <span class="timepicker-col-label">Hora</span>
+                          <div class="timepicker-list" id="timepickerHours"></div>
+                        </div>
+                        <div class="timepicker-column">
+                          <span class="timepicker-col-label">Minuto</span>
+                          <div class="timepicker-list" id="timepickerMinutes"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <input type="hidden" id="bookTime" />
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Tipo de evento</label>
+                <select id="bookEventType" required>
+                  <option value="">Selecciona...</option>
+                  <option>Bodas</option>
+                  <option>Retratos</option>
+                  <option>Eventos</option>
+                  <option>Moda</option>
+                  <option>Producto</option>
+                  <option>Arquitectura</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Ubicación</label>
+                <input type="text" id="bookLocation" placeholder="Ej: Jardín Botánico Medellín" required />
+              </div>
+              <div class="form-group">
+                <label>Notas adicionales</label>
+                <textarea id="bookNotes" rows="2" placeholder="Requerimientos especiales..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary full-width" id="btnBookNow">
+                <i class="fas fa-calendar-check"></i> Continuar al pago
+              </button>
+            </form>
+            <div id="bookingFeedback" class="booking-feedback"></div>
+          </div>
+
+          <!-- My Reservations -->
+          <div class="reservas-list-card">
+            <h3><i class="fas fa-list"></i> Mis reservas</h3>
+            <div class="reservas-stats-mini" id="reservasStatsMini">
+              <span><strong>0</strong> Activas</span>
+              <span><strong>0</strong> Pendientes</span>
+              <span><strong>0</strong> Canceladas</span>
+            </div>
+            <div id="reservasListContainer">
+              <div class="reservas-empty">
+                <i class="fas fa-calendar"></i>
+                <p>Aún no tienes reservas. Usa el formulario para agendar tu primera sesión.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Step (hidden until booking confirmed) -->
+        <div id="paymentStep" class="payment-step" style="display:none;">
+          <div class="section-header">
+            <div class="hr-red"></div>
+            <span class="badge">Pago</span>
+            <h2>Resumen y pago</h2>
+            <p>Confirma los detalles de tu reserva</p>
+          </div>
+          <div class="payment-grid">
+            <div class="payment-summary glass-card">
+              <h3><i class="fas fa-file-invoice"></i> Detalles de la reserva</h3>
+              <div id="paymentDetails"></div>
+              <button class="btn btn-primary full-width" id="btnConfirmPayment">
+                <i class="fas fa-check-circle"></i> Confirmar y pagar
+              </button>
+              <button class="btn btn-outline full-width" id="btnCancelPayment" style="margin-top:8px;">
+                <i class="fas fa-arrow-left"></i> Volver
+              </button>
+            </div>
+            <div class="payment-methods glass-card">
+              <h3><i class="fas fa-credit-card"></i> Método de pago</h3>
+              <label class="payment-option">
+                <input type="radio" name="paymentMethod" checked />
+                <span><i class="fab fa-cc-visa"></i> •••• 4532</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="paymentMethod" />
+                <span><i class="fab fa-cc-mastercard"></i> •••• 8910</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="paymentMethod" />
+                <span><i class="fas fa-money-bill-wave"></i> Efectivo</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PORTAFOLIO ===== -->
+    <section class="page" id="page-portafolio">
+      <div class="container">
+        <div class="section-header">
+          <div class="hr-red"></div>
+          <span class="badge">Portafolio</span>
+          <h2>Mi portafolio</h2>
+          <p>Administra tus trabajos y proyectos</p>
+        </div>
+        <div class="portfolio-actions">
+          <button class="btn btn-primary" id="btnNewProject"><i class="fas fa-plus"></i> Nuevo proyecto</button>
+          <button class="btn btn-outline" id="btnUploadImages"><i class="fas fa-upload"></i> Subir imágenes</button>
+        </div>
+        <div id="uploaderStatus" class="uploader-status"></div>
+        <div class="portfolio-grid" id="portfolioGrid">
+          <!-- Uploaded items appear here (at the top) -->
+          <div id="uploadedItems"></div>
+          <div class="portfolio-item">
+            <img src="https://images.unsplash.com/photo-1b23196431a819b5ea1e?w=400&h=300&fit=crop" alt="" />
+            <div class="portfolio-overlay">
+              <h4>Retratos urbanos</h4>
+              <span>12 imágenes</span>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <img src="https://images.unsplash.com/photo-ebac2115b532ebd5b745?w=400&h=300&fit=crop" alt="" />
+            <div class="portfolio-overlay">
+              <h4>Boda María & Juan</h4>
+              <span>48 imágenes</span>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <img src="https://images.unsplash.com/photo-ea65e0311d3c4a50b0b0?w=400&h=300&fit=crop" alt="" />
+            <div class="portfolio-overlay">
+              <h4>Campaign SS25</h4>
+              <span>24 imágenes</span>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <img src="https://images.unsplash.com/photo-46edd70974526fd7330c?w=400&h=300&fit=crop" alt="" />
+            <div class="portfolio-overlay">
+              <h4>Productos estrella</h4>
+              <span>18 imágenes</span>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <img src="https://images.unsplash.com/photo-a17f669200997ddf86f7?w=400&h=300&fit=crop" alt="" />
+            <div class="portfolio-overlay">
+              <h4>Arquitectura moderna</h4>
+              <span>30 imágenes</span>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <img src="https://images.unsplash.com/photo-bbe8fd7cf3893ee3866b?w=400&h=300&fit=crop" alt="" />
+            <div class="portfolio-overlay">
+              <h4>Evento corporativo</h4>
+              <span>22 imágenes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Auth Overlay for Upload -->
+      <div id="uploadAuthOverlay" class="upload-auth-overlay" style="display:none;">
+        <div class="upload-auth-card">
+          <button class="upload-auth-close" id="uploadAuthClose"><i class="fas fa-times"></i></button>
+          <h3><i class="fas fa-lock"></i> Verificación requerida</h3>
+          <p>Debes iniciar sesión como administrador o fotógrafo para subir contenido.</p>
+          <form id="uploadAuthForm">
+            <div class="form-group">
+              <label>Correo electrónico</label>
+              <input type="email" id="uploadAuthEmail" placeholder="admin@luxars.com" required />
+            </div>
+            <div class="form-group">
+              <label>Contraseña</label>
+              <input type="password" id="uploadAuthPass" placeholder="••••••••" required />
+            </div>
+            <button type="submit" class="btn btn-primary full-width"><i class="fas fa-unlock"></i> Verificar</button>
+          </form>
+          <div id="uploadAuthError" class="upload-auth-error"></div>
+          <div class="upload-auth-hint">
+            <p><strong>Usuarios de prueba:</strong></p>
+            <p>Admin: admin@luxars.com / admin123</p>
+            <p>Fotógrafo: foto@luxars.com / foto123</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upload Modal -->
+      <div id="uploadModalOverlay" class="upload-modal-overlay" style="display:none;">
+        <div class="upload-modal-card">
+          <div class="upload-modal-header">
+            <div>
+              <h3><i class="fas fa-cloud-upload-alt"></i> Subir contenido</h3>
+              <p>Añade fotos o videos a tu portafolio</p>
+            </div>
+            <button class="upload-modal-close" id="uploadModalClose"><i class="fas fa-times"></i></button>
+          </div>
+
+          <div class="upload-modal-body">
+            <!-- Tipo -->
+            <div class="upload-field">
+              <label>Tipo de contenido</label>
+              <div class="upload-type-selector">
+                <button class="upload-type-btn active" data-type="imagen">
+                  <i class="fas fa-image"></i> Imagen <small>JPG, PNG, WEBP</small>
+                </button>
+                <button class="upload-type-btn" data-type="video">
+                  <i class="fas fa-video"></i> Video <small>MP4, MOV, AVI</small>
+                </button>
+              </div>
+            </div>
+
+            <!-- Drop zone -->
+            <div class="upload-field">
+              <label>Archivo</label>
+              <div class="upload-dropzone" id="uploadDropzone">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p>Haz click para seleccionar o arrastra el archivo aquí</p>
+                <small>Máximo 50MB</small>
+                <div id="uploadFileName" class="upload-file-name"></div>
+                <input type="file" id="uploadFileInput" accept="image/jpeg,image/png,image/webp,video/mp4,video/quicktime" style="display:none;" />
+              </div>
+            </div>
+
+            <!-- Título -->
+            <div class="upload-field">
+              <label>Título</label>
+              <input type="text" id="uploadTitle" placeholder="Ej: Sesión de boda en la playa" />
+            </div>
+
+            <!-- Descripción -->
+            <div class="upload-field">
+              <label>Descripción <small>(opcional)</small></label>
+              <textarea id="uploadDesc" rows="3" placeholder="Describe tu trabajo, técnicas utilizadas, ubicación..."></textarea>
+            </div>
+
+            <!-- Etiquetas -->
+            <div class="upload-field">
+              <label>Etiquetas <small>(opcional)</small></label>
+              <input type="text" id="uploadTags" placeholder="Ej: boda, playa, atardecer (separadas por comas)" />
+            </div>
+
+            <!-- Preview -->
+            <div id="uploadPreview" class="upload-preview" style="display:none;"></div>
+          </div>
+
+          <div class="upload-modal-footer">
+            <button class="btn btn-outline" id="uploadModalCancel">Cancelar</button>
+            <button class="btn btn-primary" id="uploadSubmit"><i class="fas fa-upload"></i> Subir contenido</button>
+          </div>
+          <div id="uploadFeedback" class="upload-feedback"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer glass">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <a href="#" class="logo"><i class="fas fa-camera"></i> Lux<span>Ars</span></a>
+        <p>© 2026 LuxArs. Todos los derechos reservados.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top button -->
+  <button class="back-to-top" id="backToTop" aria-label="Volver al inicio">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Access denied modal -->
+  <div class="access-modal-wrap" id="accessModal">
+    <div class="access-modal-backdrop"></div>
+    <div class="access-modal">
+      <i class="fas fa-exclamation-triangle"></i>
+      <p id="accessModalMsg"></p>
+      <button class="btn btn-primary" id="accessModalClose">Entendido</button>
+    </div>
+  </div>
+
+  <!-- Custom Alert Modal -->
+  <div id="luxAlert" class="lux-alert-overlay" role="alertdialog" aria-modal="true" aria-hidden="true">
+    <div class="lux-alert-card">
+      <div class="lux-alert-frame"></div>
+      <div class="lux-alert-icon" id="luxAlertIcon"></div>
+      <span class="lux-alert-kicker" id="luxAlertKicker"></span>
+      <h3 class="lux-alert-title" id="luxAlertTitle"></h3>
+      <p class="lux-alert-message" id="luxAlertMessage"></p>
+      <button class="lux-alert-close" id="luxAlertClose"><i class="fas fa-times"></i> ENTENDIDO</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    window.SUPABASE_URL = "__SUPABASE_URL__";
+    window.SUPABASE_ANON_KEY = "__SUPABASE_ANON_KEY__";
+    window.MONGODB_ENABLED = __MONGODB_ENABLED__;
+  </script>
+  <script src="js/script.js"></script>
+
+  <!-- SVG Goo Filter for Blob Buttons -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden;" aria-hidden="true">
+    <defs>
+      <filter id="goo">
+        <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7" result="goo" />
+        <feBlend in2="goo" in="SourceGraphic" result="mix" />
+      </filter>
+    </defs>
+  </svg>
+</body>
+</html>
