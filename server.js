@@ -12,8 +12,16 @@ const { connectMongo, isMongoConfigured } = require('./lib/mongodb');
 const app = express();
 const PORT = process.env.PORT || 3500;
 const PUBLIC_DIR = path.join(__dirname, 'public');
+const indexPath = [
+  path.join(PUBLIC_DIR, 'index.html'),
+  path.join(__dirname, 'routes', 'index.html')
+].find(filePath => fs.existsSync(filePath));
 
-let indexHtml = fs.readFileSync(path.join(PUBLIC_DIR, 'index.html'), 'utf8');
+if (!indexPath) {
+  throw new Error('No se encontró public/index.html ni la copia anterior routes/index.html.');
+}
+
+let indexHtml = fs.readFileSync(indexPath, 'utf8');
 indexHtml = indexHtml
   .replace('__SUPABASE_URL__', process.env.SUPABASE_URL || '')
   .replace('__SUPABASE_ANON_KEY__', process.env.SUPABASE_ANON_KEY || '')
