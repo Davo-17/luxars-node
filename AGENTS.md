@@ -52,7 +52,7 @@ Detalles y lineas actualizadas en `CONTROLADORES.md`.
 ```bash
 npm install              # primera vez
 cp .env.example .env     # claves Supabase/MongoDB; sin MongoDB -> modo demo
-npm start                # http://localhost:3000
+npm start                # http://localhost:2308
 ```
 
 ## Regla fija al terminar una tarea
