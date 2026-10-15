@@ -43,7 +43,7 @@ npm start            # abre la app en http://localhost:2308
 | Controlador | Archivo | Endpoints | Responsabilidad |
 |-------------|---------|-----------|-----------------|
 | Auth | `controllers/authController.js` | `GET/PUT /api/auth/profile` | Perfil del usuario logueado (Supabase o modo demo) |
-| Photographers | `controllers/photographersController.js` | `GET /api/photographers`, `GET /api/photographers/:id` | Catalogo con filtros por especialidad y precio |
+| Photographers | `controllers/photographersController.js` | `GET /api/photographers`, `GET /api/photographers/:id`, `POST /api/photographers` | Catalogo con filtros por especialidad y precio; creacion autenticada de perfiles |
 | Bookings | `controllers/bookingsController.js` | `POST /api/bookings`, `GET /api/bookings/mine`, `POST /api/bookings/:id/cancel` | Reservas: creacion con validaciones, listado propio y cancelacion |
 
 - Datos iniciales: `data/photographers.js` (16 fotografos); MongoDB los siembra
@@ -52,6 +52,7 @@ npm start            # abre la app en http://localhost:2308
 - Configura `MONGODB_URI` en `.env` con la URI de MongoDB Atlas o una instancia
   local. No compartas ni subas esa URI.
 - Auth: `middleware/auth.js` valida JWT de Supabase o el header `x-demo-user` (modo demo).
+- `POST /api/photographers` requiere sesion de fotografo o administrador y guarda el perfil en MongoDB o en memoria (modo demo).
 - Los endpoints de reservas requieren sesion (401 si no).
 
 ### 2.3 Frontend - `public/js/script.js`
